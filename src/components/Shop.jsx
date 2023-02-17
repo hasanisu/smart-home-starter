@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { ProductsContext } from '../layout/Root';
-import { addToDb } from '../utilities/fakedb';
+import { CartContext, ProductsContext } from '../layout/Root';
+import { addToDb, removeFromDb } from '../utilities/fakedb';
 import Product from './Product';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Shop = () => {
     const products = useContext(ProductsContext);
-    const [cart, setCart] = useState([]);
+    console.log(products)
+    const [cart, setCart] = useContext(CartContext);
 
 
     const handleAddToCart=product=>{
@@ -27,6 +28,8 @@ const Shop = () => {
         toast.success('added', {autoClose: 50 })
         
     }
+
+    
 
     return (
         <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'>

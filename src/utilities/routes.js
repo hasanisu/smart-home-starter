@@ -4,12 +4,13 @@ import Home from '../components/Home';
 import Shop from '../components/Shop';
 import Cart from '../components/Cart';
 import About from '../components/About';
+import { productAdd } from '../loader/productAdd';
 
 const router = createBrowserRouter([
     {
         path:'/',
         element: <Root></Root>,
-        loader: ()=> fetch('products.json'),
+        loader: productAdd,
         children:[
             {path: '/', element: <Home></Home>},
             {path: '/home', element: <Home></Home>},
